@@ -1,5 +1,3 @@
-#! /usr/bin/env python3
-
 num = float(input())
 
 if num < 0:

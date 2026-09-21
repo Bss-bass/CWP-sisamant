@@ -1,5 +1,3 @@
-#! /usr/bin/env python3
-
 text = input()
 result_text = ""
 
