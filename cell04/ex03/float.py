@@ -1,0 +1,11 @@
+#! /usr/bin/env python3
+
+num = input("Give me a number: ")
+try:
+    float_num = float(num)
+    if float_num.is_integer():
+        print("This number is an integer.")
+    else:
+        print("This number is a float.")
+except ValueError:
+    print("This is not a valid number.")
