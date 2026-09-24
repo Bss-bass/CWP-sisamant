@@ -28,11 +28,11 @@ def check_sliding_attack(king_r, king_c, lines, attackers, directions):
         # วนลูปพุ่งไปในทิศทางนั้นเรื่อยๆ จนกว่าจะขอบกระดานหรือมีตัวขวาง 
         while is_valid(r, c, lines):
             piece = lines[r][c]
-            # ถ้าเจอหมากศัตรูที่กินในแนวนี้ได้ ให้ถือว่า Check Success
-            if piece in attackers:
-                return True
-            # ถ้าเจอตัวอักษรอื่นที่ไม่ใช่จุด (ว่าง) แสดงว่ามีตัวหมากขวางทางอยู่
-            elif piece not in ('.', ' '):
+            if piece  not in ['R', 'B', 'Q', 'P']:
+                piece = '.'
+            if piece not in ('.', ' '):
+                if piece in attackers:
+                    return True
                 break
             r, c = r + dr, c + dc
     return False
@@ -47,7 +47,7 @@ def check_pawn_attack(king_r, king_c, lines):
     return False
 
 def checkmate(board):
-    """ ฟังก์ชันหลักที่ใช้ตัดสินว่า King อยู่ในสภาวะโดนรุกหรือไม่ [cite: 48] """
+    """ ฟังก์ชันหลักที่ใช้ตัดสินว่า King อยู่ในสภาวะโดนรุกหรือไม่ """
     try:
         # 1. ตรวจสอบว่ามีพระราชาอยู่ในกระดานหรือไม่
         king = king_position(board)
@@ -76,5 +76,4 @@ def checkmate(board):
             print("Fail") # พิมพ์ Fail เมื่อ King ปลอดภัย
             
     except Exception:
-        # หากเกิดข้อผิดพลาดที่ไม่ได้คาดการณ์ ให้คืนการควบคุมแก่ผู้ใช้ (ไม่ Crash) 
         print("Fail")

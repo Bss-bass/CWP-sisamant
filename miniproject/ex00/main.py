@@ -32,7 +32,7 @@ R...
     # Test Case 4: Bishop attack
     board4 = """\
 ...K
-....
+..R.
 .B..
 ....\
 """
@@ -41,10 +41,10 @@ R...
     
     # Test Case 5: Rook attack
     board5 = """\
-....
-.K..
-....
-.R..\
+...K
+...P
+...R
+....\
 """
     print("Test 5 (Rook attack):")
     checkmate(board5)
